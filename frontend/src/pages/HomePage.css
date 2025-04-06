@@ -1,0 +1,40 @@
+.homepage {
+  display: flex;
+  flex-direction: row;
+  background-color: #0f172a;
+  color: white;
+  min-height: 100vh;
+}
+
+/* Main content beside sidebar */
+.main-content {
+  margin-left: 240px;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: margin 0.3s ease;
+}
+
+/* Section layout */
+.section-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* 🔻 MOBILE STYLES 🔻 */
+@media (max-width: 768px) {
+  .homepage {
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .section-row {
+    flex-direction: column;
+  }
+}
