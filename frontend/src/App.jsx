@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import HomePage from './pages/HomePage'
+import AddTask from './components/AddTask'
 
 function App() {
  
@@ -15,6 +16,7 @@ function App() {
          <Route path='/login' element={<Login />} />
          <Route path='/register' element={<Register />} />
          <Route path='/home' element={<HomePage />} />
+         <Route path="/addtask" element={<AddTask />} />
        </Routes>
       </BrowserRouter>
     </>
