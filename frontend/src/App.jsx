@@ -1,5 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router'
 import './App.css'
+import './index.css'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import Register from './pages/Register'
