@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
 
     // Create JWT
     const payload = { user: { id: user.id } };
-    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' }, (err, token) => {
+    jwt.sign(payload, process.env.jwt_secret, { expiresIn: '1d' }, (err, token) => {
       if (err) throw err;
       res.json({ token });
     });
@@ -41,15 +41,20 @@ router.post('/login', async (req, res) => {
 
     // Check user exists
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ msg: 'Invalid credentials' });
+    if (!user) {
+      console.log(user);
+      return res.status(400).json({ msg: 'Invalid credentials' })};
 
     // Validate password
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
+    if (!isMatch) {
+      console.log(isMatch)
+      return res.status(400).json({ msg: 'Invalid credentials' })
+    };
 
     // Create JWT
     const payload = { user: { id: user.id } };
-    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
+    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' }, (err, token) => {
       if (err) throw err;
       res.json({ token, user: { id: user.id, name: user.username, role: user.role } });
     });

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Task = require('../models/Task');
-const { authenticate } = require('../middleware/authMiddleware');
+const { authenticate } = require('../middlewares/authMiddleware');
 
 // @route   GET /analytics/productivity
 router.get('/productivity', authenticate, async (req, res) => {

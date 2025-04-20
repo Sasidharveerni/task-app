@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const Task = require('../models/Task');
-const { authenticate } = require('../middleware/authMiddleware');
+const { authenticate } = require('../middlewares/authMiddleware');
 
 // @route   GET /users/me
 router.get('/me', authenticate, async (req, res) => {
