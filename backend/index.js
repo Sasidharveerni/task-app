@@ -11,7 +11,18 @@ app.use(express.urlencoded({ extended: true }))
 
 const mongoose = require('mongoose')
 
-const cors = require('cors')
+const authRoutes = require('./routes/authRoutes');
+const taskRoutes = require('./routes/taskRoutes');
+const userRoutes = require('./routes/userRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
+
+app.use('/auth', authRoutes);
+app.use('/tasks', taskRoutes);
+app.use('/users', userRoutes);
+app.use('/analytics', analyticsRoutes);
+
+
+
 
 
 app.get("/", (req, res) => {
@@ -21,7 +32,7 @@ app.get("/", (req, res) => {
 
 app.listen(process.env.port, (req, res) => {
 
-    mongoose.connect()
+    mongoose.connect(process.env.mongo_uri)
     .then(() => {
         console.log('Database is connected!')
     })
